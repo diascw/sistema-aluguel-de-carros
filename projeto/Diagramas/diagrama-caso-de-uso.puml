@@ -1,0 +1,35 @@
+@startuml
+top to bottom direction
+
+actor Contratante
+actor Agente
+actor Usuário
+
+
+
+  (Cadastrar Usuário)
+  (Introduzir Pedido de Aluguel)
+  (Modificar Pedido de Aluguel)
+  (Consultar Pedidos de Aluguel)
+  (Cancelar Pedido de Aluguel)
+  (Executar Contrato de Aluguel)
+
+  (Avaliar Pedido de Aluguel)
+  (Registrar Automóveis)
+  (Associar Contrato de Crédito)
+
+
+Usuário --> (Cadastrar Usuário)
+
+Contratante --> (Introduzir Pedido de Aluguel)
+Contratante --> (Modificar Pedido de Aluguel)
+Contratante --> (Consultar Pedidos de Aluguel)
+Contratante --> (Cancelar Pedido de Aluguel)
+Contratante --> (Executar Contrato de Aluguel)
+
+Agente --> (Avaliar Pedido de Aluguel)
+Agente --> (Modificar Pedido de Aluguel)
+Agente --> (Executar Contrato de Aluguel)
+Agente --> (Registrar Automóveis)
+Agente --> (Associar Contrato de Crédito)
+@enduml
