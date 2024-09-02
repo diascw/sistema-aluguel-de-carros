@@ -36,4 +36,3 @@ Lab02S02: Revisão dos diagramas, de acordo com feedback em aula + Diagrama de C
 
 Lab02S03: Revisão dos diagramas, de acordo com feedback em aula + Diagrama de Implantação + Implementação de um protótipo do sistema, que permita que os usuários criados possam criar e visualizar o status de um pedido de aluguel;
 
-Prazo final: 24/09| Apresentação: 25/09| Valor total: 20 pontos | Desconto de 1.0 ponto por dia de atraso
