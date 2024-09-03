@@ -1,0 +1,69 @@
+@startuml
+
+class Usuario {
+    +login(): void
+    +modificarPedido(pedido: Pedido): void
+}
+
+class Contratante {
+    +introduzirPedido(pedido: Pedido): void
+    +consultarPedido(pedido: Pedido): Pedido
+    +cancelarPedido(pedido: Pedido): void
+}
+
+class Agente {
+    +avaliarPedido(pedido: Pedido): void
+    +cadastrarVeiculo(veiculo: Veiculo): void
+    +cadastrarUsuario(usuario: Usuario): void
+}
+
+class Pedido {
+    -id: int
+    -data: Date
+    -status: String
+    +getDetalhes(): String
+}
+
+class Veiculo {
+    -matricula: String
+    -ano: int
+    -marca: String
+    -modelo: String
+    -placa: String
+    +getInfo(): String
+}
+
+class Contrato {
+    -numero: int
+    -dataInicio: Date
+    -dataFim: Date
+    -valor: float
+    +getContratoDetalhes(): String
+}
+
+class DadosPessoais {
+    -rg: String
+    -cpf: String
+    -nome: String
+    -endereco: String
+    -profissao: String
+    +getDados(): String
+}
+
+class Empregador {
+    -nome: String
+    -rendimento: float
+}
+
+Usuario <|-- Contratante
+Usuario <|-- Agente
+Contratante "1" --> "0..*" Pedido
+Agente "1" --> "0..*" Pedido
+Agente "1" --> "0..*" Veiculo
+Agente "1" --> "0..*" Usuario
+Pedido "1" --> "1" Contrato
+Contratante "1" --> "1" DadosPessoais
+DadosPessoais "1" --> "0..3" Empregador
+Contrato "1" --> "1" Veiculo
+
+@enduml
