@@ -1,31 +1,45 @@
 @startuml
 
-package "Sistema de Aluguel de Carros" {
-  
-  package "Autenticação e Usuários" {
-    class Usuario
-    class Contratante
-    class Agente
-  }
-
-  package "Gestão de Pedidos e Contratos" {
-    class Pedido
-    class Contrato
-  }
-
-  package "Gestão de Veículos" {
-    class Veiculo
-  }
-  
-  package "Dados Pessoais" {
-    class DadosPessoais
-    class Empregador
-  }
-  
+package "Apresentação" {
+    class InterfaceUsuario
 }
 
-"Contratante" --> "DadosPessoais" 
-"Pedido" --> "Contrato"
-"Contrato" --> "Veiculo"
+package "Negócios" {
+    class GerenciadorPedidos
+    class GerenciadorContratos
+    class GerenciadorVeiculos
+    class Autenticacao
+}
+
+package "Dados" {
+    class RepositorioPedidos
+    class RepositorioContratos
+    class RepositorioVeiculos
+    class RepositorioUsuarios
+}
+
+package "Modelos" {
+    class Pedido
+    class Contrato
+    class Veiculo
+    class Usuario
+    class DadosPessoais
+    class Empregador
+}
+
+' Definindo o estilo das setas e conectando os pacotes de forma limpa
+InterfaceUsuario -[hidden]-> GerenciadorPedidos
+InterfaceUsuario ..> GerenciadorPedidos
+InterfaceUsuario ..> GerenciadorContratos
+InterfaceUsuario ..> GerenciadorVeiculos
+InterfaceUsuario ..> Autenticacao
+
+GerenciadorPedidos ..> RepositorioPedidos
+GerenciadorContratos ..> RepositorioContratos
+GerenciadorVeiculos ..> RepositorioVeiculos
+Autenticacao ..> RepositorioUsuarios
+
+RepositorioUsuarios ..> DadosPessoais
+DadosPessoais ..> Empregador
 
 @enduml
