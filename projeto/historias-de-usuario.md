@@ -50,11 +50,6 @@
 **Eu preciso** associar um contrato de crédito ao aluguel de um automóvel,  
 **Para que** o contratante possa financiar o aluguel por meio de um empréstimo bancário.
 
-### Construção Dinâmica de Páginas Web
-**Como** um desenvolvedor do sistema,  
-**Eu preciso** construir dinamicamente as páginas web do sistema,  
-**Para que** as informações exibidas estejam sempre atualizadas e reflitam o estado atual dos pedidos e contratos.
-
 ### Conexão com Servidor Central
 **Como** um usuário do sistema,  
 **Eu preciso** que o sistema esteja conectado ao servidor central,  
