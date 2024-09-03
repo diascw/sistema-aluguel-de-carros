@@ -1,0 +1,31 @@
+@startuml
+
+package "Sistema de Aluguel de Carros" {
+  
+  package "Autenticação e Usuários" {
+    class Usuario
+    class Contratante
+    class Agente
+  }
+
+  package "Gestão de Pedidos e Contratos" {
+    class Pedido
+    class Contrato
+  }
+
+  package "Gestão de Veículos" {
+    class Veiculo
+  }
+  
+  package "Dados Pessoais" {
+    class DadosPessoais
+    class Empregador
+  }
+  
+}
+
+"Contratante" --> "DadosPessoais" 
+"Pedido" --> "Contrato"
+"Contrato" --> "Veiculo"
+
+@enduml
