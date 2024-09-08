@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cadastrar Cliente</title>
+</head>
+<body>
+    <h1 th:text="${cliente.id != null} ? 'Editar Cliente' : 'Cadastrar Cliente'"></h1>
+    <form th:action="@{/clientes/salvar}" th:object="${cliente}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <label for="nome">Nome:</label>
+        <input type="text" th:field="*{nome}" /><br/>
+        <label for="cpf">CPF:</label>
+        <input type="text" th:field="*{cpf}" /><br/>
+        <label for="endereco">Endereço:</label>
+        <input type="text" th:field="*{endereco}" /><br/>
+        <button type="submit">Salvar</button>
+    </form>
+    <a href="/clientes/listar">Voltar para a lista de clientes</a>
+</body>
+</html>
