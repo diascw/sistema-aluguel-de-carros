@@ -2,20 +2,18 @@
 
 package "Sistema de Aluguel de Carros" {
 
-    [Interface Web] -[hidden]-> [Servidor de Aplicação]
-    [Servidor de Aplicação] -[hidden]-> [Banco de Dados]
-    
     [Interface Web] --> [Gerenciador de Pedidos e Contratos]
     [Interface Web] --> [Autenticação]
     
     [Gerenciador de Pedidos e Contratos] --> [Gerenciador de Veículos]
-    [Gerenciador de Pedidos e Contratos] --> [Repositorios de Dados]
+    [Gerenciador de Pedidos e Contratos] --> [Repositórios de Dados]
 
-    [Autenticação] --> [Repositorios de Dados]
+    [Autenticação] --> [Repositórios de Dados]
+    [Gerenciador de Veículos] --> [Repositórios de Dados]
+    [Repositórios de Dados] --> [Banco de Dados]
 
-    [Gerenciador de Veículos] --> [Repositorios de Dados]
-
-    [Repositorios de Dados] --> [Banco de Dados]
+    [Interface Web] --> [Servidor de Aplicação]
+    [Servidor de Aplicação] --> [Banco de Dados]
 
 }
 

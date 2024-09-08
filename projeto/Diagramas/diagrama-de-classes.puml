@@ -2,19 +2,20 @@
 
 class Usuario {
     +login(): void
-    +modificarPedido(pedido: Pedido): void
 }
 
 class Contratante {
     +introduzirPedido(pedido: Pedido): void
     +consultarPedido(pedido: Pedido): Pedido
     +cancelarPedido(pedido: Pedido): void
+    +modificarPedido(pedido: Pedido): void
 }
 
 class Agente {
     +avaliarPedido(pedido: Pedido): void
     +cadastrarVeiculo(veiculo: Veiculo): void
     +cadastrarUsuario(usuario: Usuario): void
+    +associarContratoDeCredito(contrato: Contrato): void
 }
 
 class Pedido {
@@ -57,6 +58,7 @@ class Empregador {
 
 Usuario <|-- Contratante
 Usuario <|-- Agente
+
 Contratante "1" --> "0..*" Pedido
 Agente "1" --> "0..*" Pedido
 Agente "1" --> "0..*" Veiculo
@@ -65,5 +67,4 @@ Pedido "1" --> "1" Contrato
 Contratante "1" --> "1" DadosPessoais
 DadosPessoais "1" --> "0..3" Empregador
 Contrato "1" --> "1" Veiculo
-
 @enduml

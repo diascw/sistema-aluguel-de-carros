@@ -5,31 +5,36 @@ actor Contratante
 actor Agente
 actor Usuário
 
+(Usuário Registrado) <|-- (Contratante)
+(Usuário Registrado) <|-- (Agente)
 
+(Registrar Usuário) 
+(Realizar Login)
 
-  (Cadastrar Usuário)
-  (Introduzir Pedido de Aluguel)
-  (Modificar Pedido de Aluguel)
-  (Consultar Pedidos de Aluguel)
-  (Cancelar Pedido de Aluguel)
-  (Executar Contrato de Aluguel)
+(Registrar Pedido de Aluguel)
+(Modificar Pedido de Aluguel)
+(Consultar Pedido de Aluguel)
+(Cancelar Pedido de Aluguel)
+(Executar Contrato de Aluguel)
+(Avaliar Pedido de Aluguel)
+(Registrar Automóvel)
+(Associar Contrato de Crédito)
 
-  (Avaliar Pedido de Aluguel)
-  (Registrar Automóveis)
-  (Associar Contrato de Crédito)
+Usuário --> (Registrar Usuário)
+Usuário --> (Realizar Login)
 
-
-Usuário --> (Cadastrar Usuário)
-
-Contratante --> (Introduzir Pedido de Aluguel)
+Contratante --> (Registrar Pedido de Aluguel)
 Contratante --> (Modificar Pedido de Aluguel)
-Contratante --> (Consultar Pedidos de Aluguel)
+Contratante --> (Consultar Pedido de Aluguel)
 Contratante --> (Cancelar Pedido de Aluguel)
 Contratante --> (Executar Contrato de Aluguel)
 
 Agente --> (Avaliar Pedido de Aluguel)
 Agente --> (Modificar Pedido de Aluguel)
 Agente --> (Executar Contrato de Aluguel)
-Agente --> (Registrar Automóveis)
+Agente --> (Registrar Automóvel)
 Agente --> (Associar Contrato de Crédito)
+
+(Executar Contrato de Aluguel) <-- (Avaliar Pedido de Aluguel): <<include>>
+(Executar Contrato de Aluguel) <-- (Registrar Automóvel): <<include>>
 @enduml

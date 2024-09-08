@@ -27,19 +27,17 @@ package "Modelos" {
     class Empregador
 }
 
-' Definindo o estilo das setas e conectando os pacotes de forma limpa
-InterfaceUsuario -[hidden]-> GerenciadorPedidos
-InterfaceUsuario ..> GerenciadorPedidos
-InterfaceUsuario ..> GerenciadorContratos
-InterfaceUsuario ..> GerenciadorVeiculos
-InterfaceUsuario ..> Autenticacao
+InterfaceUsuario ..> GerenciadorPedidos : usa
+InterfaceUsuario ..> GerenciadorContratos : usa
+InterfaceUsuario ..> GerenciadorVeiculos : usa
+InterfaceUsuario ..> Autenticacao : usa
 
-GerenciadorPedidos ..> RepositorioPedidos
-GerenciadorContratos ..> RepositorioContratos
-GerenciadorVeiculos ..> RepositorioVeiculos
-Autenticacao ..> RepositorioUsuarios
+GerenciadorPedidos ..> RepositorioPedidos : persiste
+GerenciadorContratos ..> RepositorioContratos : persiste
+GerenciadorVeiculos ..> RepositorioVeiculos : persiste
+Autenticacao ..> RepositorioUsuarios : persiste
 
-RepositorioUsuarios ..> DadosPessoais
-DadosPessoais ..> Empregador
+RepositorioUsuarios ..> DadosPessoais : persiste
+DadosPessoais ..> Empregador : contém
 
 @enduml
