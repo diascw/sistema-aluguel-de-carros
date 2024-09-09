@@ -14,7 +14,6 @@ public class Cliente {
     private String cpf;
     private String endereco;
 
-    // Getters e Setters
     public Long getId() {
         return id;
     }
