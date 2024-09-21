@@ -32,9 +32,9 @@ Contratante --> (Executar Contrato de Aluguel)
 Agente --> (Avaliar Pedido de Aluguel)
 Agente --> (Modificar Pedido de Aluguel)
 Agente --> (Executar Contrato de Aluguel)
-Agente --> (Registrar Automóvel)
+Agente -left-> (Registrar Automóvel)
 Agente --> (Associar Contrato de Crédito)
 
-(Executar Contrato de Aluguel) <-- (Avaliar Pedido de Aluguel): <<include>>
+(Executar Contrato de Aluguel) <-left- (Avaliar Pedido de Aluguel): <<include>>
 (Executar Contrato de Aluguel) <-- (Registrar Automóvel): <<include>>
 @enduml
