@@ -1,10 +1,11 @@
 package com.sistema.alugueldecarros.services;
 
 import com.sistema.alugueldecarros.models.Pedido;
+import com.sistema.alugueldecarros.models.Cliente;
 import com.sistema.alugueldecarros.models.Carro;
 import com.sistema.alugueldecarros.repositories.PedidoRepository;
-import com.sistema.alugueldecarros.repositories.CarroRepository;
 import com.sistema.alugueldecarros.repositories.ClienteRepository;
+import com.sistema.alugueldecarros.repositories.CarroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,14 +23,15 @@ public class PedidoService {
     @Autowired
     private CarroRepository carroRepository;
 
+    // Cria um novo pedido de aluguel
     public void criarPedido(Long clienteId, Long carroId) {
-        var cliente = clienteRepository.findById(clienteId).orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
-        var carro = carroRepository.findById(carroId).orElseThrow(() -> new RuntimeException("Carro não encontrado"));
+        Cliente cliente = clienteRepository.findById(clienteId).orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+        Carro carro = carroRepository.findById(carroId).orElseThrow(() -> new RuntimeException("Carro não encontrado"));
 
         Pedido pedido = new Pedido();
         pedido.setCliente(cliente);
         pedido.setCarro(carro);
-        pedido.setStatus("Em andamento");
+        pedido.setStatus("Pendente");
 
         pedidoRepository.save(pedido);
     }

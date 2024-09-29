@@ -12,74 +12,147 @@
             margin: 0;
             padding: 0;
         }
+
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #052208;
+            margin: 0 15px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #0b5e0a;
+        }
+
+        .navbar .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #052208;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+            .navbar a {
+                margin: 10px 0;
+            }
+        }
+
         .container {
-            max-width: 600px;
+            max-width: 800px; 
             margin: 40px auto;
             padding: 20px;
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
+
         h2 {
             text-align: center;
             color: #333;
-            margin-bottom: 20px;
+            margin-bottom: 20px; 
         }
+
         form {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 10px; 
         }
-        label {
-            font-size: 14px;
-            font-weight: 500;
-            color: #666;
-            margin-bottom: 5px;
-        }
-        select, button {
+
+        select {
             padding: 10px;
-            font-size: 14px;
             border: 1px solid #ccc;
             border-radius: 4px;
+            font-size: 14px; 
+            width: 100%;
+            box-sizing: border-box;
         }
-        button {
+
+        input[type="submit"] {
+            padding: 10px;
             background-color: #052208;
             color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
         }
-        button:hover {
+
+        input[type="submit"]:hover {
             background-color: #0b5e0a;
         }
+
         ul {
             list-style-type: none;
             padding: 0;
         }
+
         li {
-            background-color: #f1f1f1;
-            margin: 5px 0;
             padding: 10px;
-            border-radius: 5px;
+            border-bottom: 1px solid #052208;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #052208;
+            color: white;
+            margin-top: 40px;
         }
     </style>
 </head>
 <body>
+
+    <div class="navbar">
+        <div class="logo">
+            Aluguel de Carros
+        </div>
+        <div class="navbar-links">
+            <a href="/pedidos">Meus Pedidos</a>
+        </div>
+    </div>
+
     <div class="container">
-        <h2>Pedido de Aluguel</h2>
+        <h2>Fazer Pedido de Aluguel</h2>
+
         <form action="/pedidos/novo" method="POST">
             <label for="carro">Escolha um carro:</label>
             <select id="carro" name="carroId" required>
                 <option th:each="carro : ${carrosDisponiveis}" th:value="${carro.id}" th:text="${carro.modelo} + ' - ' + ${carro.marca}"></option>
             </select>
-            <button type="submit">Fazer Pedido</button>
+
+            <input type="submit" value="Fazer Pedido">
         </form>
 
         <h2>Meus Pedidos</h2>
         <ul>
             <li th:each="pedido : ${pedidos}">
-                Carro: <span th:text="${pedido.carro.modelo} + ' - ' + ${pedido.carro.marca}"></span>, 
+                Carro: <span th:text="${pedido.carro.modelo}"></span>, 
                 Status: <span th:text="${pedido.status}"></span>
             </li>
         </ul>
     </div>
+
+    <footer>
+        <p>Laboratório de Desenvolvimento de Software | Sistema de Aluguel de Carros</p>
+    </footer>
+
 </body>
 </html>
