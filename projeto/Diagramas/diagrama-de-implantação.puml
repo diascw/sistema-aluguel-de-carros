@@ -1,0 +1,21 @@
+@startuml
+node "Cliente (Navegador Web)" as Client {
+    [Interface Web (Formulário de Pedido)]
+}
+
+node "Servidor de Aplicação" as Server {
+    [API REST /pedidos]
+    [Spring Boot Backend]
+}
+
+node "Banco de Dados" as DB {
+    [Tabela de Usuários]
+    [Tabela de Pedidos]
+    [Tabela de Carros]
+}
+
+Client --> Server: Requisição HTTP (GET/POST)
+Server --> DB: Consultas e Atualizações SQL
+DB --> Server: Retorno de Dados
+Server --> Client: Respostas HTTP (JSON)
+@enduml
