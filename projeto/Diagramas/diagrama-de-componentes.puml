@@ -12,9 +12,6 @@ package "Sistema de Aluguel de Carros" {
     [Gerenciador de Veículos] --> [Repositórios de Dados]
     [Repositórios de Dados] --> [Banco de Dados]
 
-    [Interface Web] --> [Servidor de Aplicação]
-    [Servidor de Aplicação] --> [Banco de Dados]
-
 }
 
 @enduml
