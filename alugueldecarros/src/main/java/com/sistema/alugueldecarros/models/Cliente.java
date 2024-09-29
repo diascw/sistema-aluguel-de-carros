@@ -1,10 +1,11 @@
 package com.sistema.alugueldecarros.models;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-@Table(name = "clientes")
 public class Cliente {
 
     @Id
@@ -17,18 +18,7 @@ public class Cliente {
     private String endereco;
     private String profissao;
 
-    @ElementCollection
-    @CollectionTable(name = "empregadores", joinColumns = @JoinColumn(name = "cliente_id"))
-    @Column(name = "entidade_empregadora")
-    private List<String> entidadesEmpregadoras;
-
-    @ElementCollection
-    @CollectionTable(name = "rendimentos", joinColumns = @JoinColumn(name = "cliente_id"))
-    @Column(name = "rendimento")
-    private List<Double> rendimentos;
-
     // Getters e Setters
-
     public Long getId() {
         return id;
     }
@@ -75,21 +65,5 @@ public class Cliente {
 
     public void setProfissao(String profissao) {
         this.profissao = profissao;
-    }
-
-    public List<String> getEntidadesEmpregadoras() {
-        return entidadesEmpregadoras;
-    }
-
-    public void setEntidadesEmpregadoras(List<String> entidadesEmpregadoras) {
-        this.entidadesEmpregadoras = entidadesEmpregadoras;
-    }
-
-    public List<Double> getRendimentos() {
-        return rendimentos;
-    }
-
-    public void setRendimentos(List<Double> rendimentos) {
-        this.rendimentos = rendimentos;
     }
 }

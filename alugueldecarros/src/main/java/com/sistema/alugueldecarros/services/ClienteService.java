@@ -13,30 +13,32 @@ public class ClienteService {
     @Autowired
     private ClienteRepository clienteRepository;
 
-    public List<Cliente> listarClientes() {
+    public List<Cliente> listarTodos() {
         return clienteRepository.findAll();
     }
 
-    public Cliente salvarCliente(Cliente cliente) {
-        return clienteRepository.save(cliente);
+    public void adicionarCliente(Cliente cliente) {
+        System.out.println("Salvando cliente: " + cliente.getNome());
+        clienteRepository.save(cliente);
     }
 
-    public Cliente getClienteById(Long id) {
+    public Cliente buscarPorId(Long id) {
         return clienteRepository.findById(id).orElse(null);
     }
 
-    public Cliente atualizarCliente(Long id, Cliente clienteAtualizado) {
-        Cliente cliente = getClienteById(id);
-        if (cliente != null) {
-            cliente.setNome(clienteAtualizado.getNome());
-            cliente.setCpf(clienteAtualizado.getCpf());
-            cliente.setEndereco(clienteAtualizado.getEndereco());
-            return clienteRepository.save(cliente);
+    public void atualizarCliente(Long id, Cliente cliente) {
+        Cliente clienteExistente = buscarPorId(id);
+        if (clienteExistente != null) {
+            clienteExistente.setNome(cliente.getNome());
+            clienteExistente.setCpf(cliente.getCpf());
+            clienteExistente.setRg(cliente.getRg());
+            clienteExistente.setEndereco(cliente.getEndereco());
+            clienteExistente.setProfissao(cliente.getProfissao());
+            clienteRepository.save(clienteExistente);
         }
-        return null;
     }
 
-    public void deletarCliente(Long id) {
+    public void removerCliente(Long id) {
         clienteRepository.deleteById(id);
     }
 }

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Clientes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        thead {
+            background-color: #020149;
+            color: white;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        a {
+            color: #020149;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #08080c;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Lista de Clientes</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>RG</th>
+                    <th>Endereço</th>
+                    <th>Profissão</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="cliente : ${clientes}">
+                    <td th:text="${cliente.nome}"></td>
+                    <td th:text="${cliente.cpf}"></td>
+                    <td th:text="${cliente.rg}"></td>
+                    <td th:text="${cliente.endereco}"></td>
+                    <td th:text="${cliente.profissao}"></td>
+                    <td>
+                        <a th:href="@{/clientes/editar/{id}(id=${cliente.id})}">Editar</a> |
+                        <a th:href="@{/clientes/excluir/{id}(id=${cliente.id})}" style="color: red;">Excluir</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <footer>
+        <p>Sistema de Aluguel de Carros</p>
+    </footer>
+</body>
+</html>

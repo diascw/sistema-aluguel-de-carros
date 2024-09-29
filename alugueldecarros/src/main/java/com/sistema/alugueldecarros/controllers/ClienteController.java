@@ -14,39 +14,49 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
 
-    @GetMapping("/listar")
+    // Listar todos os clientes
+    @GetMapping
     public String listarClientes(Model model) {
-        model.addAttribute("clientes", clienteService.listarClientes());
-        return "clientes/listar";
+        model.addAttribute("clientes", clienteService.listarTodos());
+        return "clientes";
     }
 
-    @GetMapping("/cadastrar")
-    public String cadastrarClienteForm(Model model) {
+    // Formulário para adicionar cliente
+    @GetMapping("/novo")
+    public String formNovoCliente(Model model) {
         model.addAttribute("cliente", new Cliente());
-        return "clientes/cadastrar";
+        return "formCliente";
     }
 
     @PostMapping("/salvar")
     public String salvarCliente(@ModelAttribute Cliente cliente) {
-        clienteService.salvarCliente(cliente);
-        return "redirect:/clientes/listar";
+        System.out.println("Salvando cliente no controller: " + cliente.getNome());
+        clienteService.adicionarCliente(cliente);
+        return "redirect:/clientes";
     }
 
+    // Editar cliente
     @GetMapping("/editar/{id}")
-    public String editarCliente(@PathVariable Long id, Model model) {
-        model.addAttribute("cliente", clienteService.getClienteById(id));
-        return "clientes/cadastrar";
+    public String formEditarCliente(@PathVariable Long id, Model model) {
+        Cliente cliente = clienteService.buscarPorId(id);
+        if (cliente != null) {
+            model.addAttribute("cliente", cliente);
+            return "formCliente";
+        }
+        return "redirect:/clientes";
     }
 
-    @PostMapping("/atualizar/{id}")
+    // Atualizar cliente
+    @PostMapping("/editar/{id}")
     public String atualizarCliente(@PathVariable Long id, @ModelAttribute Cliente cliente) {
         clienteService.atualizarCliente(id, cliente);
-        return "redirect:/clientes/listar";
+        return "redirect:/clientes";
     }
 
-    @GetMapping("/deletar/{id}")
-    public String deletarCliente(@PathVariable Long id) {
-        clienteService.deletarCliente(id);
-        return "redirect:/clientes/listar";
+    // Excluir cliente
+    @GetMapping("/excluir/{id}")
+    public String excluirCliente(@PathVariable Long id) {
+        clienteService.removerCliente(id);
+        return "redirect:/clientes";
     }
 }
