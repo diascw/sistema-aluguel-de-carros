@@ -18,7 +18,6 @@ public class Cliente {
     private String endereco;
     private String profissao;
 
-    // Getters e Setters
     public Long getId() {
         return id;
     }
