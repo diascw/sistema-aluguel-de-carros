@@ -13,7 +13,6 @@ public class ClienteService {
     @Autowired
     private ClienteRepository clienteRepository;
 
-    // Método para listar todos os clientes (somente admin pode listar)
     public List<Cliente> listarTodos(Cliente clienteLogado) {
         if (clienteLogado != null && "admin".equalsIgnoreCase(clienteLogado.getProfissao())) {
             return clienteRepository.findAll();

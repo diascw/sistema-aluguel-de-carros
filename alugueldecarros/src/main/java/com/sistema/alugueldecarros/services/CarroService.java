@@ -16,4 +16,9 @@ public class CarroService {
     public List<Carro> listarCarrosDisponiveis() {
         return carroRepository.findByDisponivelTrue();
     }
+
+    public Carro buscarCarroPorId(Long carroId) {
+        return carroRepository.findById(carroId)
+                .orElseThrow(() -> new RuntimeException("Carro não encontrado"));
+    }
 }

@@ -15,7 +15,6 @@ public class Login {
     private String nome;
     private String cpf;
     
-    // Getters e Setters
     public Long getId() {
         return id;
     }

@@ -1,11 +1,11 @@
 package com.sistema.alugueldecarros.services;
 
-import com.sistema.alugueldecarros.models.Carro;
-import com.sistema.alugueldecarros.models.Cliente;
 import com.sistema.alugueldecarros.models.Pedido;
-import com.sistema.alugueldecarros.repositories.CarroRepository;
-import com.sistema.alugueldecarros.repositories.ClienteRepository;
+import com.sistema.alugueldecarros.models.Cliente;
+import com.sistema.alugueldecarros.models.Carro;
 import com.sistema.alugueldecarros.repositories.PedidoRepository;
+import com.sistema.alugueldecarros.repositories.ClienteRepository;
+import com.sistema.alugueldecarros.repositories.CarroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,26 +33,31 @@ public class PedidoService {
 
         Pedido pedido = new Pedido();
         pedido.setCliente(cliente);
-        pedido.setCarro(carro); 
+        pedido.setCarro(carro);
         pedido.setStatus("Pendente");
         pedido.setDataCriacao(LocalDateTime.now());
 
         pedidoRepository.save(pedido);
     }
-    
+
     public List<Pedido> listarTodosPedidos() {
-        return pedidoRepository.findAll();  
+        return pedidoRepository.findAll();
     }
 
     public List<Pedido> listarPedidosPorCliente(Long clienteId) {
-        return pedidoRepository.findByClienteId(clienteId); 
+        return pedidoRepository.findByClienteId(clienteId);
     }
 
-    public void atualizarStatus(Long pedidoId, String status) {
-        Pedido pedido = pedidoRepository.findById(pedidoId)
+    public Pedido buscarPedidoPorId(Long pedidoId) {
+        return pedidoRepository.findById(pedidoId)
             .orElseThrow(() -> new RuntimeException("Pedido não encontrado"));
+    }
 
-        pedido.setStatus(status);
+    public void salvarPedido(Pedido pedido) {
         pedidoRepository.save(pedido);
+    }
+
+    public void excluirPedido(Long pedidoId) {
+        pedidoRepository.deleteById(pedidoId);
     }
 }

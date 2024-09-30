@@ -78,7 +78,7 @@
             gap: 10px;
         }
 
-        select {
+        select, input[type="submit"] {
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
@@ -88,19 +88,9 @@
         }
 
         input[type="submit"] {
-            padding: 10px;
             background-color: #052208;
             color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 14px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
-            width: 100%;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #0b5e0a;
         }
 
         ul {
@@ -113,6 +103,36 @@
             border-bottom: 1px solid #052208;
         }
 
+        /* Botão de Excluir com cor vermelha */
+        .btn-excluir {
+            padding: 8px 12px;
+            margin: 5px 0;
+            background-color: #dc3545; /* Vermelho */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-excluir:hover {
+            background-color: #c82333; /* Vermelho mais escuro */
+        }
+
+        /* Botão de Editar com cor verde */
+        .btn-editar {
+            padding: 8px 12px;
+            margin: 5px 0;
+            background-color: #28a745; /* Verde */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-editar:hover {
+            background-color: #218838; /* Verde mais escuro */
+        }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -120,7 +140,23 @@
             color: white;
             margin-top: auto; 
         }
+
+        .edit-form {
+            display: none;
+        }
+
+        .edit-form.visible {
+            display: block;
+        }
+
     </style>
+
+    <script>
+        function toggleEditForm(pedidoId) {
+            const form = document.getElementById(`edit-form-${pedidoId}`);
+            form.classList.toggle('visible');
+        }
+    </script>
 </head>
 <body>
 
@@ -137,6 +173,7 @@
     <div class="container">
         <h2>Pedido de Aluguel</h2>
 
+        <!-- Formulário para fazer um novo pedido -->
         <form action="/pedidos/novo" method="POST">
             <label for="carro">Escolha um carro:</label>
             <select id="carro" name="carroId" required>
@@ -151,6 +188,26 @@
             <li th:each="pedido : ${pedidos}">
                 Carro: <span th:text="${pedido.carro.modelo}"></span>, 
                 Status: <span th:text="${pedido.status}"></span>
+                
+                <form th:action="@{/pedidos/excluir/{id}(id=${pedido.id})}" method="POST" style="display:inline;">
+                    <button type="submit" class="btn-excluir">Excluir</button>
+                </form>
+
+                <button type="button" class="btn-editar" th:onclick="'toggleEditForm(' + ${pedido.id} + ')'">Editar</button>
+
+                <div th:id="'edit-form-' + ${pedido.id}" class="edit-form">
+                    <form th:action="@{/pedidos/editar/{id}(id=${pedido.id})}" method="POST">
+                        <label for="carro">Escolha um novo carro:</label>
+                        <select name="carroId" required>
+                            <option th:each="carro : ${carrosDisponiveis}"
+                                    th:value="${carro.id}"
+                                    th:text="${carro.modelo} + ' - ' + ${carro.marca}"
+                                    th:selected="${carro.id == pedido.carro.id}">
+                            </option>
+                        </select>
+                        <input type="submit" value="Salvar Alterações">
+                    </form>
+                </div>
             </li>
         </ul>
     </div>
