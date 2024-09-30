@@ -4,7 +4,7 @@ node "Cliente (Navegador Web)" as Client {
 }
 
 node "Servidor de Aplicação" as Server {
-    [API REST /pedidos]
+
     [Spring Boot Backend]
 }
 
