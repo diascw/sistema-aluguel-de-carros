@@ -9,7 +9,7 @@ node "Servidor de Aplicação" as Server {
 }
 
 node "Banco de Dados" as DB {
-    [Tabela de Usuários]
+    [Tabela de Clientes]
     [Tabela de Pedidos]
     [Tabela de Carros]
 }
