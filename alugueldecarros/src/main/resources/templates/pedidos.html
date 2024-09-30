@@ -11,6 +11,9 @@
             background-color: #f9f9f9;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         .navbar {
@@ -54,31 +57,32 @@
         }
 
         .container {
-            max-width: 800px; 
+            max-width: 800px;
             margin: 40px auto;
             padding: 20px;
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            flex-grow: 1; 
         }
 
         h2 {
             text-align: center;
             color: #333;
-            margin-bottom: 20px; 
+            margin-bottom: 20px;
         }
 
         form {
             display: flex;
             flex-direction: column;
-            gap: 10px; 
+            gap: 10px;
         }
 
         select {
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
-            font-size: 14px; 
+            font-size: 14px;
             width: 100%;
             box-sizing: border-box;
         }
@@ -114,7 +118,7 @@
             padding: 20px;
             background-color: #052208;
             color: white;
-            margin-top: 40px;
+            margin-top: auto; 
         }
     </style>
 </head>
@@ -126,18 +130,19 @@
         </div>
         <div class="navbar-links">
             <a href="/pedidos">Meus Pedidos</a>
+            <a href="/login">Sair</a>
         </div>
     </div>
 
     <div class="container">
-        <h2>Fazer Pedido de Aluguel</h2>
+        <h2>Pedido de Aluguel</h2>
 
         <form action="/pedidos/novo" method="POST">
             <label for="carro">Escolha um carro:</label>
             <select id="carro" name="carroId" required>
                 <option th:each="carro : ${carrosDisponiveis}" th:value="${carro.id}" th:text="${carro.modelo} + ' - ' + ${carro.marca}"></option>
             </select>
-
+        
             <input type="submit" value="Fazer Pedido">
         </form>
 

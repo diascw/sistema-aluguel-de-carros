@@ -15,13 +15,13 @@ public class AdminController {
 
     @GetMapping("/pedidos")
     public String listarPedidosAdmin(Model model) {
-        model.addAttribute("pedidos", pedidoService.listarTodosPedidos());
-        return "pedidosAdmin"; 
+        model.addAttribute("pedidos", pedidoService.listarTodosPedidos()); 
+        return "admin/pedidosAdmin"; 
     }
 
     @PostMapping("/pedidos/atualizar")
     public String atualizarStatusPedido(@RequestParam Long pedidoId, @RequestParam String status) {
-        pedidoService.atualizarStatus(pedidoId, status);
-        return "redirect:/admin/pedidos"; 
+        pedidoService.atualizarStatus(pedidoId, status);  
+        return "redirect:/pedidosAdmin"; 
     }
 }

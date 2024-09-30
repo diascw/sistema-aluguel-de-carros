@@ -1,6 +1,7 @@
 package com.sistema.alugueldecarros.models;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 public class Pedido {
@@ -10,15 +11,23 @@ public class Pedido {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "cliente_id")
+    @JoinColumn(name = "cliente_id", nullable = false)
     private Cliente cliente;
 
     @ManyToOne
-    @JoinColumn(name = "carro_id")
+    @JoinColumn(name = "carro_id", nullable = false)
     private Carro carro;
 
     private String status;
 
+    private LocalDateTime dataCriacao;
+
+    @PrePersist
+    public void prePersist() {
+        dataCriacao = LocalDateTime.now();
+    }
+
+    // Getters e Setters
     public Long getId() {
         return id;
     }
@@ -49,5 +58,13 @@ public class Pedido {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public LocalDateTime getDataCriacao() {
+        return dataCriacao;
+    }
+
+    public void setDataCriacao(LocalDateTime dataCriacao) {
+        this.dataCriacao = dataCriacao;
     }
 }
