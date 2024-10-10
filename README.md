@@ -24,6 +24,7 @@
 ## Tecnologias Utilizadas
 
 - ![Java](https://img.shields.io/badge/-Java-007396?style=flat&logo=java&logoColor=white)
+- ![HTML](https://img.shields.io/badge/-HTML-05122A?style=flat&logo=HTML5)&nbsp;
 - ![PlantUML](https://img.shields.io/badge/-PlantUML-1abc9c?style=flat&logo=plantuml&logoColor=white)
 - ![Spring Boot](https://img.shields.io/badge/-Spring%20Boot-6DB33F?style=flat&logo=spring-boot&logoColor=white)
 - ![Maven](https://img.shields.io/badge/-Maven-C71A36?style=flat&logo=apache-maven&logoColor=white)
