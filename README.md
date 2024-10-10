@@ -20,11 +20,17 @@
 * Em termos do sistema, o servidor central encontra-se ligado aos computadores locais dos clientes e aos diversos agentes aderentes através da Internet.
 * O sistema pode ser subdividido em dois subsistemas: um para gestão de pedidos e contratos; e outro para a construção dinâmica das páginas web.
 
-# Processo de Desenvolvimento 
 
-* Lab02S01: Modelagem do sistema: Diagrama de Casos de Uso, Histórias do Usuário, Diagrama de Classes e Diagrama de Pacotes (Visão Lógica). 
+## Tecnologias Utilizadas
 
-* Lab02S02: Revisão dos diagramas, de acordo com feedback em aula + Diagrama de Componentes do Sistema + Implementação do CRUD de cliente (atendendo aos RNFs de ser um sistema WEB, em Java, com MVC);
+- ![Spring Boot](https://img.shields.io/badge/-Spring%20Boot-6DB33F?style=flat&logo=spring-boot&logoColor=white)
+- ![Maven](https://img.shields.io/badge/-Maven-C71A36?style=flat&logo=apache-maven&logoColor=white)
+- ![HeidiSQL](https://img.shields.io/badge/-HeidiSQL-009933?style=flat&logo=heidisql&logoColor=white)
+- ![MySQL](https://img.shields.io/badge/-MySQL-4479A1?style=flat&logo=mysql&logoColor=white)
+- ![Node.js](https://img.shields.io/badge/-Node.js-339933?style=flat&logo=node.js&logoColor=white)
 
-* Lab02S03: Revisão dos diagramas, de acordo com feedback em aula + Diagrama de Implantação + Implementação de um protótipo do sistema, que permita que os usuários criados possam criar e visualizar o status de um pedido de aluguel;
+## IDE Utilizada
+
+- ![VS Code](https://img.shields.io/badge/-VS%20Code-007ACC?style=flat&logo=visual-studio-code&logoColor=white)
+
 
